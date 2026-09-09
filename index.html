@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DRAGON UC</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050505;color:#fff;font-family:Tahoma,Arial}
+header{background:#090909;border-bottom:1px solid #d99b00;position:sticky;top:0;z-index:10}
+.nav{max-width:1200px;margin:auto;padding:15px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.logo{font-size:25px;font-weight:bold;color:#ffc400}
+button{cursor:pointer;border:1px solid #876000;background:#111;color:#fff;padding:10px 14px;border-radius:10px;font-weight:bold}
+button:hover{border-color:#ffc400;color:#ffc400}
+.container{max-width:1200px;margin:auto;padding:20px}
+.hero{min-height:430px;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+h1{font-size:70px;color:#ffc400;margin:10px 0}
+h2{color:#ffc400}
+.hero p{font-size:17px;line-height:2;color:#ddd}
+.dragon{text-align:center;font-size:190px;filter:drop-shadow(0 0 25px #f90)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{background:#101010;border:1px solid #604600;border-radius:15px;padding:18px;margin-bottom:15px}
+.card:hover{border-color:#ffc400}
+.uc{font-size:25px;color:#ffc400;font-weight:bold}
+.price{font-size:20px;margin:10px 0}
+input,select,textarea{width:100%;background:#080808;color:#fff;border:1px solid #604600;border-radius:9px;padding:12px;margin:7px 0 12px}
+textarea{min-height:110px;resize:vertical}
+.primary{width:100%;background:linear-gradient(90deg,#bd8000,#ffd84a);color:#111;border:0}
+.layout{display:grid;grid-template-columns:1.4fr .6fr;gap:15px}
+.notice{padding:12px;background:#171207;border:1px dashed #806000;border-radius:10px;line-height:2}
+.status{padding:7px 10px;border-radius:20px}
+.wait{background:#493800;color:#ffd95c}
+.approve{background:#093919;color:#75ff9c}
+.reject{background:#410d0d;color:#ff9999}
+.item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #292929;padding:10px 0}
+.receipt{max-width:240px;max-height:260px;border:1px solid #765500;border-radius:10px}
+.hidden{display:none!important}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+footer{text-align:center;color:#888;padding:30px;border-top:1px solid #403000;margin-top:30px}
+@media(max-width:850px){
+.hero,.layout{grid-template-columns:1fr}
+.grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:500px){
+.grid{grid-template-columns:1fr 1fr}
+.nav{flex-direction:column}
+h1{font-size:48px}
+.dragon{font-size:120px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+<div class="logo">🐉 DRAGON UC</div>
+
+<div>
+<button onclick="go('home')">خانه</button>
+<button onclick="go('orders')">🛒 سبد خرید</button>
+<button onclick="go('track')">🔎 پیگیری</button>
+<button onclick="go('login')">🔐 مدیر</button>
+<button onclick="window.open('https://t.me/Mohamd_8z','_blank')">💬 پشتیبانی</button>
+</div>
+</div>
+</header>
+
+<main class="container">
+
+<section id="home" class="page">
+
+<div class="hero">
+
+<div>
+<div class="notice">GAME CURRENCY STORE</div>
+
+<h1>DRAGON UC</h1>
+
+<h2 id="mainTitle">🔥 ارزون‌ترین جا برای خرید UC پابجی</h2>
+
+<p id="mainDescription">
+خرید UC، CP، جم کلش و الماس فری فایر با بهترین قیمت.
+محصول موردنظر خودت را انتخاب کن و سفارش بده.
+</p>
+
+<button class="primary" style="width:auto" onclick="document.getElementById('productsBox').scrollIntoView()">
+مشاهده محصولات
+</button>
+</div>
+
+<div class="dragon">🐉</div>
+
+</div>
+
+<div id="productsBox">
+
+<h2>🔥 محصولات فروشگاه</h2>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+
+<button onclick="setFilter('all')">همه بازی‌ها</button>
+<button onclick="setFilter('PUBG Mobile')">🎯 پابجی</button>
+<button onclick="setFilter('Call of Duty')">🔫 کالاف</button>
+<button onclick="setFilter('Free Fire')">🔥 فری فایر</button>
+<button onclick="setFilter('Clash of Clans')">⚔️ کلش آف کلنز</button>
+<button onclick="setFilter('Clash Royale')">👑 کلش رویال</button>
+
+</div>
+
+<div id="products" class="grid"></div>
+
+</div>
+
+</section>
+
+
+<section id="orders" class="page hidden">
+
+<h2>🛒 سبد خرید</h2>
+
+<div class="layout">
+
+<div class="card">
+<div id="cart"></div>
+
+<h2 id="total">مجموع: ۰ تومان</h2>
+
+<button class="primary" onclick="checkout()">
+ادامه و پرداخت
+</button>
+</div>
+
+<div class="card">
+<h3>💳 اطلاعات پرداخت</h3>
+
+<div class="notice">
+شماره کارت:<br>
+<b>6219 8619 5140 8409</b>
+<br><br>
+به نام:<br>
+<b>محمد حسین ظهرابی</b>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="checkout" class="page hidden">
+
+<h2>💳 ثبت سفارش</h2>
+
+<div class="card">
+
+<label>UID بازیکن</label>
+<input id="uid" inputmode="numeric" placeholder="UID پابجی">
+
+<label>عکس رسید پرداخت</label>
+<input id="receipt" type="file" accept="image/*">
+
+<div id="receiptPreview"></div>
+
+<div class="notice">
+شماره کارت: <b>6219861951408409</b><br>
+صاحب کارت: <b>محمد حسین ظهرابی</b>
+</div>
+
+<br>
+
+<button class="primary" onclick="submitOrder()">
+✅ ثبت سفارش
+</button>
+
+</div>
+
+</section>
+
+
+<section id="track" class="page hidden">
+
+<h2>🔎 پیگیری سفارش</h2>
+
+<div class="card">
+
+<input id="trackId" placeholder="مثلاً DUC-123456">
+
+<button class="primary" onclick="trackOrder()">
+پیگیری سفارش
+</button>
+
+<div id="trackResult"></div>
+
+</div>
+
+</section>
+
+
+<section id="login" class="page hidden">
+
+<h2>🔐 ورود مدیر</h2>
+
+<div class="card">
+
+<input id="adminPass" type="password" placeholder="رمز مدیر">
+
+<button class="primary" onclick="loginAdmin()">
+ورود به پنل
+</button>
+
+</div>
+
+</section>
+
+
+<section id="admin" class="page hidden">
+
+<h2>👑 پنل مدیریت DRAGON UC</h2>
+
+<div class="layout">
+
+<div>
+
+<div class="card">
+<h3>📦 سفارش‌ها</h3>
+<div id="adminOrders"></div>
+</div>
+
+
+<div class="card">
+
+<h3>✏️ مدیریت متن‌های سایت</h3>
+
+<label>عنوان اصلی سایت</label>
+
+<input id="editTitle">
+
+<label>متن توضیحات</label>
+
+<textarea id="editDescription"></textarea>
+
+<button class="primary" onclick="saveTexts()">
+💾 ذخیره متن‌ها
+</button>
+
+<hr>
+
+<h3>📢 متن‌های تبلیغاتی</h3>
+
+<input id="adText" placeholder="مثلاً 🎁 تخفیف ویژه خرید UC">
+
+<button onclick="addAd()">
+➕ اضافه کردن متن
+</button>
+
+<div id="ads"></div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>🛍️ مدیریت محصولات</h3>
+
+<div id="adminProducts"></div>
+
+<hr>
+
+<h3>➕ افزودن محصول</h3>
+
+<select id="newGame">
+<option value="PUBG Mobile">🎯 PUBG Mobile</option>
+<option value="Call of Duty">🔫 Call of Duty</option>
+<option value="Free Fire">🔥 Free Fire</option>
+<option value="Clash of Clans">⚔️ Clash of Clans</option>
+<option value="Clash Royale">👑 Clash Royale</option>
+</select>
+
+<input id="newType" placeholder="نوع ارز: UC / CP / جم / الماس">
+
+<input id="newAmount" type="number" placeholder="مقدار">
+
+<input id="newPrice" type="number" placeholder="قیمت تومان">
+
+<button class="primary" onclick="addProduct()">
+➕ افزودن محصول
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+© 2026 DRAGON UC — فروش ارز بازی
+</footer>
+
+
+<script>
+
+const PRODUCT_KEY="dragon_products";
+const ORDER_KEY="dragon_orders";
+const TEXT_KEY="dragon_texts";
+
+let cart=[];
+let receiptData="";
+let filter="all";
+
+let products=JSON.parse(localStorage.getItem(PRODUCT_KEY)||"null")||[
+{game:"PUBG Mobile",type:"UC",amount:60,price:214000},
+{game:"PUBG Mobile",type:"UC",amount:120,price:425000},
+{game:"PUBG Mobile",type:"UC",amount:180,price:640000},
+{game:"PUBG Mobile",type:"UC",amount:240,price:850000},
+{game:"PUBG Mobile",type:"UC",amount:325,price:1060000},
+{game:"PUBG Mobile",type:"UC",amount:385,price:1300000},
+{game:"PUBG Mobile",type:"UC",amount:445,price:1500000},
+{game:"PUBG Mobile",type:"UC",amount:660,price:2150000}
+];
+
+let orders=JSON.parse(localStorage.getItem(ORDER_KEY)||"[]");
+
+let texts=JSON.parse(localStorage.getItem(TEXT_KEY)||"null")||{
+title:"🔥 ارزون‌ترین جا برای خرید UC پابجی",
+description:"خرید UC، CP، جم کلش و الماس فری فایر با بهترین قیمت. محصول موردنظر خودت را انتخاب کن و سفارش بده.",
+ads:[]
+};
+
+function save(){
+localStorage.setItem(PRODUCT_KEY,JSON.stringify(products));
+localStorage.setItem(ORDER_KEY,JSON.stringify(orders));
+localStorage.setItem(TEXT_KEY,JSON.stringify(texts));
+}
+
+function toman(n){
+return Number(n).toLocaleString("fa-IR")+" تومان";
+}
+
+function go(id){
+
+document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));
+
+document.getElementById(id).classList.remove("hidden");
+
+if(id==="orders")renderCart();
+
+if(id==="admin"){
+renderAdminOrders();
+renderAdminProducts();
+loadTextPanel();
+}
+
+window.scrollTo(0,0);
+}
+
+function gameTitle(g){
+
+if(g==="PUBG Mobile")return "🎯 پابجی";
+if(g==="Call of Duty")return "🔫 کالاف دیوتی";
+if(g==="Free Fire")return "🔥 فری فایر";
+if(g==="Clash of Clans")return "⚔️ کلش آف کلنز";
+if(g==="Clash Royale")return "👑 کلش رویال";
+
+return g;
+}
+
+function setFilter(g){
+filter=g;
+renderProducts();
+}
+
+function renderProducts(){
+
+let list=filter==="all"
+?products
+:products.filter(p=>p.game===filter);
+
+let el=document.getElementById("products");
+
+if(!list.length){
+el.innerHTML='<div class="notice">برای این بازی هنوز محصولی اضافه نشده.</div>';
+return;
+}
+
+el.innerHTML=list.map(p=>{
+
+let i=products.indexOf(p);
+
+return `
+<div class="card">
+
+<div>${gameTitle(p.game)}</div>
+
+<div class="uc">
+${p.amount} ${p.type}
+</div>
+
+<div class="price">
+${toman(p.price)}
+</div>
+
+<button class="primary" onclick="addCart(${i})">
+افزودن به سبد 🛒
+</button>
+
+</div>
+`;
+
+}).join("");
+
+}
+
+function addCart(i){
+
+cart.push({...products[i]});
+go("orders");
+
+}
+
+function renderCart(){
+
+let el=document.getElementById("cart");
+
+if(!cart.length){
+
+el.innerHTML='<div class="notice">سبد خرید خالی است.</div>';
+document.getElementById("total").innerText="مجموع: ۰ تومان";
+
+return;
+}
+
+el.innerHTML=cart.map((p,i)=>`
+
+<div class="item">
+
+<span>
+${gameTitle(p.game)}
+<br>
+${p.amount} ${p.type}
+</span>
+
+<span>
+${toman(p.price)}
+</span>
+
+<button onclick="cart.splice(${i},1);renderCart()">
+حذف
+</button>
+
+</div>
+
+`).join("");
+
+document.getElementById("total").innerText=
+"مجموع: "+
+toman(cart.reduce((a,b)=>a+b.price,0));
+
+}
+
+function checkout(){
+
+if(!cart.length){
+alert("اول یک محصول انتخاب کن.");
+return;
+}
+
+go("checkout");
+
+}
+
+document.getElementById("receipt").addEventListener("change",function(){
+
+let file=this.files[0];
+
+if(!file)return;
+
+if(file.size>3*1024*1024){
+
+alert("حجم رسید نباید بیشتر از ۳ مگابایت باشد.");
+this.value="";
+return;
+
+}
+
+let reader=new FileReader();
+
+reader.onload=()=>{
+receiptData=reader.result;
+
+document.getElementById("receiptPreview").innerHTML=
+`<img class="receipt" src="${receiptData}">`;
+};
+
+reader.readAsDataURL(file);
+
+});
+
+function submitOrder(){
+
+let uid=document.getElementById("uid").value.trim();
+
+if(!/^\d{8,15}$/.test(uid)){
+alert("UID باید بین ۸ تا ۱۵ رقم باشد.");
+return;
+}
+
+if(!receiptData){
+alert("عکس رسید را انتخاب کن.");
+return;
+}
+
+let id="DUC-"+Math.floor(100000+Math.random()*900000);
+
+let order={
+id,
+uid,
+items:cart.map(p=>({
+game:p.game,
+type:p.type,
+amount:p.amount
+})),
+total:cart.reduce((a,b)=>a+b.price,0),
+receipt:receiptData,
+status:"در انتظار بررسی",
+date:new Date().toLocaleString("fa-IR")
+};
+
+orders.unshift(order);
+
+save();
+
+cart=[];
+receiptData="";
+
+document.getElementById("uid").value="";
+document.getElementById("receipt").value="";
+
+alert("سفارش ثبت شد.\nشماره سفارش: "+id);
+
+go("track");
+
+document.getElementById("trackId").value=id;
+
+showTrack(order);
+
+}
+
+function statusClass(s){
+
+if(s==="در انتظار بررسی")return "wait";
+if(s==="یوسی پرداخت شود")return "approve";
+return "reject";
+
+}
+
+function orderHTML(o){
+
+return `
+<div class="card">
+
+<b>${o.id}</b>
+
+<p>UID: ${o.uid}</p>
+
+<p>
+محصول:
+${o.items.map(x=>
+`${gameTitle(x.game)} — ${x.amount} ${x.type}`
+).join(" + ")}
+</p>
+
+<p>مبلغ: ${toman(o.total)}</p>
+
+<span class="status ${statusClass(o.status)}">
+${o.status}
+</span>
+
+<p>${o.date}</p>
+
+</div>
+`;
+
+}
+
+function trackOrder(){
+
+let id=document.getElementById("trackId").value.trim();
+
+let o=orders.find(x=>x.id===id);
+
+document.getElementById("trackResult").innerHTML=o
+?orderHTML(o)
+:'<div class="notice">سفارش پیدا نشد.</div>';
+
+}
+
+function showTrack(o){
+document.getElementById("trackResult").innerHTML=orderHTML(o);
+}
+
+function loginAdmin(){
+
+if(document.getElementById("adminPass").value==="Mohammad1389"){
+
+go("admin");
+
+document.getElementById("adminPass").value="";
+
+}else{
+
+alert("رمز مدیر اشتباه است.");
+
+}
+
+}
+
+function renderAdminOrders(){
+
+let el=document.getElementById("adminOrders");
+
+if(!orders.length){
+
+el.innerHTML='<div class="notice">سفارشی ثبت نشده است.</div>';
+return;
+
+}
+
+el.innerHTML=orders.map(o=>`
+
+<div class="card">
+
+<b>${o.id}</b>
+
+<p>UID: ${o.uid}</p>
+
+<p>
+${o.items.map(x=>
+`${gameTitle(x.game)} — ${x.amount} ${x.type}`
+).join(" + ")}
+</p>
+
+<p>مبلغ: ${toman(o.total)}</p>
+
+<p>
+وضعیت:
+<span class="status ${statusClass(o.status)}">
+${o.status}
+</span>
+</p>
+
+<p>${o.date}</p>
+
+${o.receipt?
+`<img class="receipt" src="${o.receipt}" onclick="window.open(this.src)">`
+:""}
+
+<div class="actions">
+
+<button onclick="approve('${o.id}')">
+✅ تأیید پرداخت
+</button>
+
+<button onclick="reject('${o.id}')">
+❌ رد سفارش
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function approve(id){
+
+let o=orders.find(x=>x.id===id);
+
+if(o){
+
+o.status="یوسی پرداخت شود";
+save();
+renderAdminOrders();
+
+}
+
+}
+
+function reject(id){
+
+let o=orders.find(x=>x.id===id);
+
+if(o){
+
+o.status="سفارش رد شد";
+save();
+renderAdminOrders();
+
+}
+
+}
+
+function renderAdminProducts(){
+
+document.getElementById("adminProducts").innerHTML=
+products.map((p,i)=>`
+
+<div class="item">
+
+<span>
+${gameTitle(p.game)}
+<br>
+${p.amount} ${p.type}
+<br>
+${toman(p.price)}
+</span>
+
+<div>
+
+<button onclick="editProduct(${i})">
+ویرایش
+</button>
+
+<button onclick="deleteProduct(${i})">
+حذف
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function addProduct(){
+
+let game=document.getElementById("newGame").value;
+let type=document.getElementById("newType").value.trim();
+let amount=Number(document.getElementById("newAmount").value);
+let price=Number(document.getElementById("newPrice").value);
+
+if(!type||!amount||!price){
+
+alert("همه اطلاعات محصول را وارد کن.");
+return;
+
+}
+
+products.push({
+game,
+type,
+amount,
+price
+});
+
+save();
+
+renderProducts();
+renderAdminProducts();
+
+document.getElementById("newType").value="";
+document.getElementById("newAmount").value="";
+document.getElementById("newPrice").value="";
+
+}
+
+function editProduct(i){
+
+let p=products[i];
+
+let price=prompt("قیمت جدید:",p.price);
+
+if(price&&Number(price)>0){
+
+p.price=Number(price);
+
+save();
+
+renderProducts();
+renderAdminProducts();
+
+}
+
+}
+
+function deleteProduct(i){
+
+if(confirm("محصول حذف شود؟")){
+
+products.splice(i,1);
+
+save();
+
+renderProducts();
+renderAdminProducts();
+
+}
+
+}
+
+
+/* مدیریت متن سایت */
+
+function loadTextPanel(){
+
+document.getElementById("editTitle").value=texts.title;
+
+document.getElementById("editDescription").value=texts.description;
+
+renderAds();
+
+}
+
+function saveTexts(){
+
+texts.title=document.getElementById("editTitle").value.trim();
+
+texts.description=document.getElementById("editDescription").value.trim();
+
+save();
+
+document.getElementById("mainTitle").innerText=texts.title;
+
+document.getElementById("mainDescription").innerText=texts.description;
+
+alert("متن‌های سایت ذخیره شدند.");
+
+}
+
+function addAd(){
+
+let text=document.getElementById("adText").value.trim();
+
+if(!text)return;
+
+texts.ads.push(text);
+
+document.getElementById("adText").value="";
+
+save();
+
+renderAds();
+
+}
+
+function renderAds(){
+
+let el=document.getElementById("ads");
+
+el.innerHTML=texts.ads.map((text,i)=>`
+
+<div class="item">
+
+<span>${text}</span>
+
+<button onclick="deleteAd(${i})">
+حذف
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+function deleteAd(i){
+
+texts.ads.splice(i,1);
+
+save();
+
+renderAds();
+
+}
+
+
+/* بارگذاری متن ذخیره‌شده */
+
+document.getElementById("mainTitle").innerText=texts.title;
+
+document.getElementById("mainDescription").innerText=texts.description;
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
