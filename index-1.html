@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DRAGON UC | فروش UC پابجی</title>
+<style>
+:root{--gold:#f5b400;--gold2:#ffd65a;--bg:#050505;--card:rgba(14,14,14,.9);--red:#ff3b20;--muted:#aaa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;color:#fff;background:#030303;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:
+radial-gradient(circle at 78% 22%,rgba(255,150,0,.18),transparent 24%),
+radial-gradient(circle at 15% 80%,rgba(255,40,0,.12),transparent 28%),
+linear-gradient(135deg,#020202 0%,#111 45%,#020202 100%)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.18;background-image:
+radial-gradient(circle at 78% 25%,#ffb000 0 2px,transparent 3px),
+radial-gradient(circle at 82% 32%,#ff4500 0 1px,transparent 2px),
+radial-gradient(circle at 72% 36%,#ffd000 0 1px,transparent 2px);
+background-size:110px 110px,90px 90px,150px 150px;pointer-events:none}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:50;background:rgba(3,3,3,.88);backdrop-filter:blur(12px);border-bottom:1px solid #5b4100}
+.nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:15px}
+.logo{font-size:25px;font-weight:900;color:var(--gold);letter-spacing:1px;text-shadow:0 0 15px #f5b40055}
+nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+nav button,.btn{border:1px solid #7c5900;background:#101010;color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700}
+nav button:hover,.btn:hover{background:#1b1b1b;border-color:var(--gold);color:var(--gold2)}
+.container{max-width:1200px;margin:auto;padding:0 18px}
+.hero{min-height:440px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:25px;padding:55px 0 35px}
+.hero-copy h1{font-size:clamp(44px,7vw,82px);margin:0;color:var(--gold);line-height:.95;text-shadow:0 0 28px #ffb00044}
+.hero-copy h2{font-size:clamp(20px,3vw,34px);margin:20px 0 12px}
+.hero-copy p{color:#ddd;line-height:2;font-size:17px}
+.dragon{min-height:330px;display:flex;align-items:center;justify-content:center;position:relative}
+.dragon-art{font-size:210px;filter:drop-shadow(0 0 22px #ff9d00);transform:scaleX(-1);animation:float 3s ease-in-out infinite}
+.dragon-art:after{content:"";position:absolute;width:270px;height:270px;border-radius:50%;background:#ff7b00;filter:blur(90px);opacity:.18;z-index:-1}
+@keyframes float{50%{transform:scaleX(-1) translateY(-12px)}}
+.badge{display:inline-block;padding:8px 14px;border:1px solid #806000;border-radius:999px;color:var(--gold2);background:#120e02}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{background:linear-gradient(145deg,rgba(24,24,24,.95),rgba(8,8,8,.96));border:1px solid #624700;border-radius:18px;padding:18px;box-shadow:0 12px 30px #0008}
+.card:hover{border-color:var(--gold);transform:translateY(-2px);transition:.2s}
+.uc{font-size:25px;font-weight:900;color:var(--gold)}
+.price{font-size:21px;margin:10px 0;color:#fff}
+.small{color:var(--muted);font-size:13px}
+.section{padding:30px 0}.section h2{color:var(--gold);margin:0 0 18px}
+.layout{display:grid;grid-template-columns:1.4fr .6fr;gap:18px}
+.side{position:sticky;top:82px;height:max-content}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #282828;padding:9px 0}
+.total{font-size:22px;color:var(--gold);font-weight:900;margin:15px 0}
+input,select{width:100%;background:#090909;color:#fff;border:1px solid #5d4300;border-radius:11px;padding:12px;margin:7px 0 12px;outline:none}
+input:focus,select:focus{border-color:var(--gold)}
+label{font-size:14px;color:#ddd}
+.primary{width:100%;background:linear-gradient(90deg,#b87b00,#ffd447);color:#111;border:0;padding:13px;border-radius:12px;font-weight:900;cursor:pointer}
+.danger{background:#35100b;border-color:#7a2418;color:#ff816d}
+.success{background:#0c2c14;border-color:#176c2d;color:#6dff9b}
+.info{background:#111c2b;border-color:#25466f;color:#8ec5ff}
+.notice{padding:12px;border-radius:12px;background:#141006;border:1px dashed #806000;color:#ddd;line-height:1.8}
+.status{display:inline-block;padding:7px 10px;border-radius:999px;font-size:13px;font-weight:900}
+.wait{background:#3a2d05;color:#ffd45c}.approve{background:#0c3518;color:#75ff9c}.reject{background:#3b0d0d;color:#ff8b8b}
+.admin-box{display:none}.admin-box.active{display:block}
+.order{border:1px solid #3b300f;border-radius:14px;padding:14px;margin:10px 0;background:#0c0c0c}
+.receipt{max-width:240px;max-height:260px;border-radius:10px;border:1px solid #5e4600;margin-top:8px;cursor:pointer}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+footer{margin-top:40px;padding:28px 0;border-top:1px solid #4d3900;text-align:center;color:#aaa}
+.float{position:fixed;left:18px;bottom:18px;z-index:60;background:#1a9b4a;color:white;border-radius:999px;padding:14px 18px;font-weight:900;box-shadow:0 8px 25px #000}
+.hidden{display:none!important}
+@media(max-width:900px){.hero,.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.side{position:static}.dragon{min-height:220px}.dragon-art{font-size:150px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr}.nav{align-items:flex-start;flex-direction:column}.hero{padding-top:35px}.card{padding:14px}.dragon-art{font-size:120px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">🐉 DRAGON UC</div>
+    <nav>
+      <button onclick="go('home')">خانه</button>
+      <button onclick="go('orders')">سفارشات شما</button>
+      <button onclick="go('track')">پیگیری سفارش</button>
+      <button onclick="go('login')">🔐 ورود مدیر</button>
+      <button onclick="window.open('https://t.me/Mohamd_8z','_blank')">💬 پشتیبانی</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+<section id="home" class="page">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="badge">PUBG MOBILE • UC STORE</span>
+      <h1>DRAGON UC</h1>
+      <h2>🔥 ارزون‌ترین جا برای خرید UC پابجی</h2>
+      <p>بسته موردنظر خودت را انتخاب کن، به سبد خرید اضافه کن و سفارش را ثبت کن. رسید پرداخت برای مدیر نمایش داده می‌شود.</p>
+      <button class="primary" style="width:auto;padding:14px 24px" onclick="document.getElementById('packages').scrollIntoView()">مشاهده بسته‌ها</button>
+    </div>
+    <div class="dragon"><div class="dragon-art">🐉</div></div>
+  </div>
+
+  <div class="section" id="packages">
+    <h2>🔥 بسته‌های UC</h2>
+    <div id="products" class="grid"></div>
+  </div>
+</section>
+
+<section id="orders" class="page hidden">
+  <div class="section">
+    <h2>🛒 سفارش و سبد خرید</h2>
+    <div class="layout">
+      <div class="card">
+        <div id="cartList" class="list"></div>
+        <div id="cartTotal" class="total">مجموع: ۰ تومان</div>
+        <button class="primary" onclick="checkout()">ادامه و پرداخت</button>
+      </div>
+      <aside class="card side">
+        <h3>💳 اطلاعات پرداخت</h3>
+        <div class="notice">شماره کارت:<br><b>6219 8619 5140 8409</b><br><br>به نام:<br><b>محمد حسین ظهرابی</b></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="checkout" class="page hidden">
+  <div class="section">
+    <h2>💳 ثبت سفارش</h2>
+    <div class="card">
+      <label>شناسه PUBG (UID)</label>
+      <input id="uid" inputmode="numeric" placeholder="مثلاً 51330832639">
+      <label>عکس رسید پرداخت</label>
+      <input id="receipt" type="file" accept="image/*">
+      <div id="receiptPreview"></div>
+      <div class="notice">شماره کارت: <b>6219861951408409</b><br>صاحب کارت: <b>محمد حسین ظهرابی</b></div>
+      <button class="primary" onclick="submitOrder()">✅ ثبت سفارش</button>
+    </div>
+  </div>
+</section>
+
+<section id="track" class="page hidden">
+  <div class="section">
+    <h2>🔎 پیگیری سفارش</h2>
+    <div class="card">
+      <label>شماره سفارش</label>
+      <input id="trackId" placeholder="مثلاً DUC-123456">
+      <button class="primary" onclick="trackOrder()">پیگیری</button>
+      <div id="trackResult" style="margin-top:15px"></div>
+    </div>
+  </div>
+</section>
+
+<section id="login" class="page hidden">
+  <div class="section">
+    <h2>🔐 ورود مدیر</h2>
+    <div class="card">
+      <label>رمز ورود پنل</label>
+      <input id="adminPass" type="password" placeholder="رمز مدیر">
+      <button class="primary" onclick="loginAdmin()">ورود به پنل</button>
+    </div>
+  </div>
+</section>
+
+<section id="admin" class="page hidden">
+  <div class="section">
+    <h2>👑 پنل مدیریت DRAGON UC</h2>
+    <div class="admin-box active">
+      <div class="layout">
+        <div class="card">
+          <h3>📦 سفارش‌ها</h3>
+          <div id="adminOrders"></div>
+        </div>
+        <aside class="card side">
+          <h3>🛍️ مدیریت محصولات</h3>
+          <div id="adminPrices"></div>
+          <hr style="border-color:#332700">
+          <h4>➕ افزودن محصول جدید</h4>
+          <select id="newGame">
+            <option value="PUBG">PUBG Mobile</option>
+            <option value="Call of Duty">Call of Duty Mobile (CP)</option>
+            <option value="Free Fire">Free Fire (الماس)</option>
+            <option value="Clash of Clans">Clash of Clans (جم)</option>
+            <option value="Clash Royale">Clash Royale (جم)</option>
+          </select>
+          <input id="newType" placeholder="نوع ارز، مثلاً UC / CP / جم / الماس">
+          <input id="newAmount" type="number" placeholder="مقدار، مثلاً 60">
+          <input id="newPrice" type="number" placeholder="قیمت تومان">
+          <button class="primary" onclick="addProduct()">➕ افزودن به فروشگاه</button>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="float" href="https://t.me/Mohamd_8z" target="_blank">💬 پشتیبانی</a>
+<footer>© 2026 DRAGON UC — فروش UC پابجی</footer>
+
+<script>
+const KEY_PRODUCTS='dragon_products_v2', KEY_ORDERS='dragon_orders_v2';
+let cart=[], receiptData='';
+let products=JSON.parse(localStorage.getItem(KEY_PRODUCTS)||'null') || [
+ {game:'PUBG Mobile',type:'UC',amount:60,uc:60,price:214000},
+ {game:'PUBG Mobile',type:'UC',amount:120,uc:120,price:425000},
+ {game:'PUBG Mobile',type:'UC',amount:180,uc:180,price:640000},
+ {game:'PUBG Mobile',type:'UC',amount:240,uc:240,price:850000},
+ {game:'PUBG Mobile',type:'UC',amount:325,uc:325,price:1060000},
+ {game:'PUBG Mobile',type:'UC',amount:385,uc:385,price:1300000},
+ {game:'PUBG Mobile',type:'UC',amount:445,uc:445,price:1500000},
+ {game:'PUBG Mobile',type:'UC',amount:660,uc:660,price:2150000}
+];
+let orders=JSON.parse(localStorage.getItem(KEY_ORDERS)||'[]');
+
+const toman=n=>Number(n).toLocaleString('fa-IR')+' تومان';
+function save(){localStorage.setItem(KEY_PRODUCTS,JSON.stringify(products));localStorage.setItem(KEY_ORDERS,JSON.stringify(orders))}
+function go(id){
+ document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
+ document.getElementById(id).classList.remove('hidden');
+ if(id==='orders')renderCart();
+ if(id==='admin'){renderAdminOrders();renderAdminPrices()}
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function setGameFilter(game){
+  gameFilter=game;
+  renderProducts();
+}
+
+function gameTitle(game){
+  if(game==='PUBG Mobile') return '🎯 پابجی';
+  if(game==='Call of Duty') return '🔫 کالاف دیوتی';
+  if(game==='Free Fire') return '🔥 فری فایر';
+  if(game==='Clash of Clans') return '⚔️ کلش آف کلنز';
+  if(game==='Clash Royale') return '👑 کلش رویال';
+  return game;
+}
+
+function renderProducts(){
+  const el=document.getElementById('products');
+
+  const visible=gameFilter==='all'
+    ? products
+    : products.filter(p=>(p.game||'PUBG Mobile')===gameFilter);
+
+  if(!visible.length){
+    el.innerHTML='<div class="notice">هنوز محصولی برای این بازی اضافه نشده است.</div>';
+    return;
+  }
+
+  el.innerHTML=visible.map(p=>{
+    const realIndex=products.indexOf(p);
+    return `
+      <div class="card">
+        <div class="small">${gameTitle(p.game||'PUBG Mobile')}</div>
+        <div class="uc">${p.amount||p.uc} ${p.type||'UC'}</div>
+        <div class="price">${toman(p.price)}</div>
+        <div class="small">محصول مخصوص ${gameTitle(p.game||'PUBG Mobile')}</div>
+        <button class="primary" onclick="addCart(${realIndex})" style="margin-top:12px">
+          افزودن به سبد 🛒
+        </button>
+      </div>
+    `;
+  }).join('');
+}
+
+function addCart(i){cart.push({...products[i]});go('orders');renderCart()}
+function removeCart(i){cart.splice(i,1);renderCart()}
+function renderCart(){
+ const el=document.getElementById('cartList');
+ if(!cart.length){el.innerHTML='<div class="notice">سبد خرید خالی است.</div>';document.getElementById('cartTotal').textContent='مجموع: ۰ تومان';return}
+ el.innerHTML=cart.map((p,i)=>`<div class="item"><span>${p.game||'PUBG Mobile'} — ${p.amount||p.uc} ${p.type||'UC'}</span><span>${toman(p.price)}</span><button class="btn danger" onclick="removeCart(${i})">حذف</button></div>`).join('');
+ document.getElementById('cartTotal').textContent='مجموع: '+toman(cart.reduce((s,p)=>s+p.price,0));
+}
+function checkout(){
+ if(!cart.length){alert('اول یک بسته UC انتخاب کن.');return}
+ go('checkout');
+}
+document.getElementById('receipt').addEventListener('change',e=>{
+ const f=e.target.files[0]; if(!f)return;
+ if(f.size>3*1024*1024){alert('حجم رسید بیشتر از ۳ مگابایت است.');e.target.value='';return}
+ const r=new FileReader();
+ r.onload=()=>{receiptData=r.result;document.getElementById('receiptPreview').innerHTML='<img class="receipt" src="'+receiptData+'" alt="پیش‌نمایش رسید">';};
+ r.readAsDataURL(f);
+});
+function submitOrder(){
+ const uid=document.getElementById('uid').value.trim();
+ if(!/^\d{8,15}$/.test(uid)){alert('UID باید عددی و بین ۸ تا ۱۵ رقم باشد.');return}
+ if(!receiptData){alert('عکس رسید پرداخت را انتخاب کن.');return}
+ const total=cart.reduce((s,p)=>s+p.price,0), id='DUC-'+Math.floor(100000+Math.random()*900000);
+ const order={id,uid,items:cart.map(x=>({game:x.game||'PUBG Mobile',amount:x.amount||x.uc,type:x.type||'UC'})),total,receiptImage:receiptData,status:'در انتظار بررسی',date:new Date().toLocaleString('fa-IR')};
+ orders.unshift(order);save();cart=[];receiptData='';
+ document.getElementById('uid').value='';document.getElementById('receipt').value='';document.getElementById('receiptPreview').innerHTML='';
+ alert('سفارش ثبت شد. شماره سفارش: '+id);
+ go('track');document.getElementById('trackId').value=id;showTrack(order);
+}
+function trackOrder(){
+ const id=document.getElementById('trackId').value.trim();
+ const o=orders.find(x=>x.id===id);
+ document.getElementById('trackResult').innerHTML=o?trackHTML(o):'<div class="notice">سفارشی با این شماره پیدا نشد.</div>';
+}
+function trackHTML(o){
+ let c=o.status==='در انتظار بررسی'?'wait':o.status==='یوسی پرداخت شود'?'approve':'reject';
+ return `<div class="order"><b>${o.id}</b><p>UID: ${o.uid}</p><p>محصول: ${o.items.map(x=>typeof x==='object' ? `${x.game} — ${x.amount} ${x.type}` : x+' UC').join(' + ')}</p><p>مبلغ: ${toman(o.total)}</p><span class="status ${c}">${o.status}</span><p class="small">${o.date}</p></div>`;
+}
+function showTrack(o){document.getElementById('trackResult').innerHTML=trackHTML(o)}
+function loginAdmin(){
+ if(document.getElementById('adminPass').value==='Mohammad1389'){go('admin');document.getElementById('adminPass').value=''}
+ else alert('رمز مدیر اشتباه است.');
+}
+function renderAdminOrders(){
+ const el=document.getElementById('adminOrders');
+ if(!orders.length){el.innerHTML='<div class="notice">هنوز سفارشی ثبت نشده است.</div>';return}
+ el.innerHTML=orders.map(o=>`<div class="order">
+ <b>${o.id}</b><p>UID: ${o.uid}</p><p>محصول: ${o.items.map(x=>typeof x==='object' ? `${x.game} — ${x.amount} ${x.type}` : x+' UC').join(' + ')}</p><p>مبلغ: ${toman(o.total)}</p>
+ <p>وضعیت: <span class="status ${o.status==='در انتظار بررسی'?'wait':o.status==='یوسی پرداخت شود'?'approve':'reject'}">${o.status}</span></p>
+ <p class="small">${o.date}</p>
+ ${o.receiptImage?`<img class="receipt" src="${o.receiptImage}" onclick="window.open(this.src,'_blank')" alt="رسید">`:''}
+ <div class="actions">
+ <button class="btn success" onclick="approve('${o.id}')">✅ تأیید پرداخت</button>
+ <button class="btn danger" onclick="reject('${o.id}')">❌ رد سفارش</button>
+ </div></div>`).join('');
+}
+function approve(id){const o=orders.find(x=>x.id===id);if(o){o.status='یوسی پرداخت شود';save();renderAdminOrders();alert('سفارش تأیید شد.');}}
+function reject(id){const o=orders.find(x=>x.id===id);if(o){o.status='سفارش رد شد';save();renderAdminOrders();alert('سفارش رد شد.');}}
+function renderAdminPrices(){
+ document.getElementById('adminPrices').innerHTML=products.map((p,i)=>`<div class="item" style="align-items:flex-start">
+ <span><b>${p.game||'PUBG Mobile'}</b><br>${p.amount||p.uc} ${p.type||'UC'}<br><small>${toman(p.price)}</small></span>
+ <div><button class="btn" onclick="editPrice(${i})">ویرایش</button>
+ <button class="btn danger" onclick="deleteProduct(${i})">حذف</button></div></div>`).join('');
+}
+function editPrice(i){
+ const p=products[i];
+ const price=prompt('قیمت جدید را به تومان وارد کن:',p.price);
+ if(price&&Number(price)>0){
+   p.price=Number(price);save();renderProducts();renderAdminPrices();
+ }
+}
+function deleteProduct(i){
+ if(confirm('این محصول از فروشگاه حذف شود؟')){
+   products.splice(i,1);save();renderProducts();renderAdminPrices();
+ }
+}
+function addProduct(){
+ const game=document.getElementById('newGame').value;
+ const type=document.getElementById('newType').value.trim();
+ const amount=Number(document.getElementById('newAmount').value);
+ const price=Number(document.getElementById('newPrice').value);
+ if(!game||!type||!amount||!price){alert('بازی، نوع ارز، مقدار و قیمت را وارد کن.');return}
+ products.push({game,type,amount,price});
+ save();renderProducts();renderAdminPrices();
+ document.getElementById('newType').value='';
+ document.getElementById('newAmount').value='';
+ document.getElementById('newPrice').value='';
+ alert('محصول با موفقیت به فروشگاه اضافه شد.');
+}
+renderProducts();
+</script>
+</body>
+</html>
